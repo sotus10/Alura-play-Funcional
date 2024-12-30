@@ -11,8 +11,27 @@ async function listarVideos() {
 
 }
 
-//Exportar la función listarVideos
+//Crear un video con el metodo POST
+async function crearVideo(titulo, descripcion, url, imagem) {
+    const conexion = await fetch("http://localhost:3001/videos", {
+        method: "POST",
+        headers: {"content-type": "application/json"},
+        body: JSON.stringify({
+            titulo: titulo,
+            descripcion: `${descripcion} mil visualizaciones`,
+            url: url,
+            imagem: imagem
+        })
+    });
+    
+    const conexionConvertida = await conexion.json();
+
+    return conexionConvertida;
+
+}
+
+//Exportar la función listarVideos y crearVideo
 export const conexionAPI = {
-    listarVideos
+    listarVideos, crearVideo
 }
 //listarVideos();
