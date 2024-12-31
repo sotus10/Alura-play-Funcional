@@ -1,6 +1,8 @@
+import { conexionAPI } from "./conexionAPI.js";
+
 const formulario = document.querySelector("[data-formulario]");
 
-function crearVideo(evento) {
+async function crearVideo(evento) {
 
     evento.preventDefault();   
     
@@ -10,7 +12,9 @@ function crearVideo(evento) {
 
     const descripcion = Math.floor(Math.random() * 10).toString();
 
+    await conexionAPI.enviarVideo(titulo, descripcion, url, imagem);
 
+    window.location.href = "../pages/envio-concluido.html";
 }
 
 formulario.addEventListener("submit", evento => crearVideo(evento));
