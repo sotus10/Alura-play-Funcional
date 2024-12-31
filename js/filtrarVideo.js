@@ -15,6 +15,10 @@ async function filtrarVideo(evento) {
 
     busqueda.forEach(video => lista.appendChild(crearCard(video.titulo, video.descripcion, video.url, video.imagem)));
 
+    if(busqueda.length == 0) {
+        lista.innerHTML = `<h2 class="mensaje__titulo">No se encontraron videos con la  ${datosDeBusqueda} :(</h2>`
+    }
+
     //console.log(busqueda);
 
 }

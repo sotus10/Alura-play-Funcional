@@ -1,7 +1,7 @@
 //Conexión a la API 
 async function listarVideos() {
     //fetch es una función que permite hacer peticiones a un servidor
-    const conexion = await fetch("http://localhost:3001/vide");
+    const conexion = await fetch("http://localhost:3001/videos");
 
     //await es una palabra clave que se puede usar para esperar a que se resuelva una promesa
     const conexionConvertida = await conexion.json();
@@ -25,6 +25,10 @@ async function enviarVideo(titulo, descripcion, url, imagem) {
     });
     
     const conexionConvertida = await conexion.json();
+
+    if(!conexion.ok) {
+        throw new Error("Ha ocurrido un error al enviar el video :(")
+    }
 
     return conexionConvertida;
 
